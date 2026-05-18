@@ -443,105 +443,19 @@ st.markdown("""
 # TABS NAVIGATION
 # ─────────────────────────────────────────────
 tab1, tab2, tab3, tab4, tab5 = st.tabs([
-    "  Beranda",
     "  Prediksi",
+    "  Informasi",
     "  Eksplorasi Data",
     "  Source Code",
     "  Tentang"
 ])
 
+
+
 # ══════════════════════════════════════════════
-# TAB 1 — BERANDA
+# TAB 1 — PREDIKSI (TAMPILAN VERTIKAL KE BAWAH)
 # ══════════════════════════════════════════════
 with tab1:
-    st.markdown("""
-    <div style="margin-bottom:2rem; margin-top:0.5rem;">
-        <div style="font-size:1.8rem;font-weight:700;color:white;line-height:1.2;margin-bottom:.2rem;">Prediksi Karir</div>
-        <div style="font-size:1.8rem;font-weight:700;color:#a78bfa;line-height:1.2;margin-bottom:1rem;">Mahasiswa CS</div>
-        <div style="font-size:13px;color:#9ca3af;line-height:1.8;max-width:650px;">
-            Dukung perencanaan karir yang lebih cerdas dengan memanfaatkan teknologi
-            Machine Learning untuk mengetahui jalur karir yang paling sesuai dengan profil akademik kamu.
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    st.markdown("""
-    <div class="stat-row">
-        <div class="stat-card"><div class="stat-val">3.300</div><div class="stat-lbl">Total Dataset</div></div>
-        <div class="stat-card"><div class="stat-val">30</div><div class="stat-lbl">Kelas Karir</div></div>
-        <div class="stat-card"><div class="stat-val">88%</div><div class="stat-lbl">Akurasi Model</div></div>
-        <div class="stat-card"><div class="stat-val">3</div><div class="stat-lbl">Algoritma ML</div></div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    col1, col2 = st.columns(2, gap="large")
-
-    with col1:
-        st.markdown("""
-        <div class="card">
-            <div class="card-title"> Tentang Aplikasi</div>
-            <div style="font-size:13px;color:#9ca3af;line-height:1.8;">
-                Aplikasi berbasis Streamlit yang dirancang untuk memprediksi karir mahasiswa
-                Ilmu Komputer menggunakan algoritma Machine Learning.<br><br>
-                Aplikasi ini menganalisis profil akademik seperti GPA, domain minat, proyek,
-                dan kemampuan pemrograman (Python, SQL, Java) untuk menghasilkan prediksi karir
-                yang akurat dan relevan.
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-
-        st.markdown("""
-        <div class="card">
-            <div class="card-title"> Tujuan Aplikasi</div>
-            <div style="font-size:13px;color:#9ca3af;line-height:1.8;">
-                ✦ Membantu mahasiswa mengenali potensi karir sejak dini<br>
-                ✦ Memberikan insight berbasis data tentang jalur karir CS<br>
-                ✦ Memvisualisasikan hasil prediksi secara interaktif<br>
-                ✦ Menjadi referensi perencanaan pengembangan skill
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-
-    with col2:
-        st.markdown("""
-        <div class="card">
-            <div class="card-title"> Algoritma yang Digunakan</div>
-        """, unsafe_allow_html=True)
-        algos = [
-            ("Random Forest", "Ensemble learning — model terbaik, akurasi 88.33%", "✅"),
-            ("Decision Tree", "Tree-based — mudah diinterpretasi, akurasi 88.64%", ""),
-            ("Logistic Regression", "Linear model — baseline, akurasi 41.52%", ""),
-        ]
-        for name, desc, icon in algos:
-            st.markdown(f"""
-            <div style="background:#110d1f;border:1px solid #1e1b2e;border-radius:10px;
-                        padding:.8rem 1rem;margin-bottom:.6rem;">
-                <div style="display:flex;justify-content:space-between;align-items:center;">
-                    <span style="color:white;font-size:13px;font-weight:600;">{name}</span>
-                    <span style="font-size:14px;">{icon}</span>
-                </div>
-                <div style="color:#6b7280;font-size:11px;margin-top:3px;">{desc}</div>
-            </div>
-            """, unsafe_allow_html=True)
-        st.markdown('</div>', unsafe_allow_html=True)
-
-        st.markdown("""
-        <div class="card">
-            <div class="card-title"> Feature Engineering</div>
-            <div style="font-size:13px;color:#9ca3af;line-height:1.8;">
-                Untuk meningkatkan akurasi, ditambahkan 4 fitur baru:<br>
-                <span class="badge">Skill Score</span>
-                <span class="badge">GPA Category</span>
-                <span class="badge">Domain × Python</span>
-                <span class="badge">Python × SQL</span>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-
-# ══════════════════════════════════════════════
-# TAB 2 — PREDIKSI (TAMPILAN VERTIKAL KE BAWAH)
-# ══════════════════════════════════════════════
-with tab2:
     best_model, X_train, X_test, y_train, y_test, df = load_model()
 
     domains  = sorted(df['Interested Domain'].unique()) if 'Interested Domain' in df.columns else ['Artificial Intelligence']
@@ -695,6 +609,96 @@ with tab2:
     st.pyplot(fig)
     plt.close()
     st.markdown('</div>', unsafe_allow_html=True)
+
+
+# ══════════════════════════════════════════════
+# TAB 1 — BERANDA
+# ══════════════════════════════════════════════
+with tab2:
+    st.markdown("""
+    <div style="margin-bottom:2rem; margin-top:0.5rem;">
+        <div style="font-size:1.8rem;font-weight:700;color:white;line-height:1.2;margin-bottom:.2rem;">Prediksi Karir</div>
+        <div style="font-size:1.8rem;font-weight:700;color:#a78bfa;line-height:1.2;margin-bottom:1rem;">Mahasiswa CS</div>
+        <div style="font-size:13px;color:#9ca3af;line-height:1.8;max-width:650px;">
+            Dukung perencanaan karir yang lebih cerdas dengan memanfaatkan teknologi
+            Machine Learning untuk mengetahui jalur karir yang paling sesuai dengan profil akademik kamu.
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="stat-row">
+        <div class="stat-card"><div class="stat-val">3.300</div><div class="stat-lbl">Total Dataset</div></div>
+        <div class="stat-card"><div class="stat-val">30</div><div class="stat-lbl">Kelas Karir</div></div>
+        <div class="stat-card"><div class="stat-val">88%</div><div class="stat-lbl">Akurasi Model</div></div>
+        <div class="stat-card"><div class="stat-val">3</div><div class="stat-lbl">Algoritma ML</div></div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    col1, col2 = st.columns(2, gap="large")
+
+    with col1:
+        st.markdown("""
+        <div class="card">
+            <div class="card-title"> Tentang Aplikasi</div>
+            <div style="font-size:13px;color:#9ca3af;line-height:1.8;">
+                Aplikasi berbasis Streamlit yang dirancang untuk memprediksi karir mahasiswa
+                Ilmu Komputer menggunakan algoritma Machine Learning.<br><br>
+                Aplikasi ini menganalisis profil akademik seperti GPA, domain minat, proyek,
+                dan kemampuan pemrograman (Python, SQL, Java) untuk menghasilkan prediksi karir
+                yang akurat dan relevan.
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+        st.markdown("""
+        <div class="card">
+            <div class="card-title"> Tujuan Aplikasi</div>
+            <div style="font-size:13px;color:#9ca3af;line-height:1.8;">
+                ✦ Membantu mahasiswa mengenali potensi karir sejak dini<br>
+                ✦ Memberikan insight berbasis data tentang jalur karir CS<br>
+                ✦ Memvisualisasikan hasil prediksi secara interaktif<br>
+                ✦ Menjadi referensi perencanaan pengembangan skill
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with col2:
+        st.markdown("""
+        <div class="card">
+            <div class="card-title"> Algoritma yang Digunakan</div>
+        """, unsafe_allow_html=True)
+        algos = [
+            ("Random Forest", "Ensemble learning — model terbaik, akurasi 88.33%", "✅"),
+            ("Decision Tree", "Tree-based — mudah diinterpretasi, akurasi 88.64%", ""),
+            ("Logistic Regression", "Linear model — baseline, akurasi 41.52%", ""),
+        ]
+        for name, desc, icon in algos:
+            st.markdown(f"""
+            <div style="background:#110d1f;border:1px solid #1e1b2e;border-radius:10px;
+                        padding:.8rem 1rem;margin-bottom:.6rem;">
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                    <span style="color:white;font-size:13px;font-weight:600;">{name}</span>
+                    <span style="font-size:14px;">{icon}</span>
+                </div>
+                <div style="color:#6b7280;font-size:11px;margin-top:3px;">{desc}</div>
+            </div>
+            """, unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+
+        st.markdown("""
+        <div class="card">
+            <div class="card-title"> Feature Engineering</div>
+            <div style="font-size:13px;color:#9ca3af;line-height:1.8;">
+                Untuk meningkatkan akurasi, ditambahkan 4 fitur baru:<br>
+                <span class="badge">Skill Score</span>
+                <span class="badge">GPA Category</span>
+                <span class="badge">Domain × Python</span>
+                <span class="badge">Python × SQL</span>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
 
 # ══════════════════════════════════════════════
 # TAB 3 — EKSPLORASI DATA
